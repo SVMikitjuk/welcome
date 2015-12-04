@@ -40,7 +40,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <mainClass>com.mik.Main</mainClass>
-                            <packageName>welcome</packageName>
+                            <packageName>com.mik</packageName>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
