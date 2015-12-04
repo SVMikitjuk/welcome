@@ -25,7 +25,7 @@ public class WelcomeTest {
     // определяем значениея локали которые будем тестировать
     @Parameterized.Parameters()
     public static Collection getParameters() {
-        return Arrays.asList(Locale.US, Locale.forLanguageTag("RU"));
+        return Arrays.asList(Locale.ENGLISH, Locale.forLanguageTag("RU"));
     }
 
     // Проверка попадания в утро

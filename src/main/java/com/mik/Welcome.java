@@ -13,11 +13,10 @@ import java.util.ResourceBundle;
 public class Welcome {
 
     //Переменные границы периода дня
-    private final static LocalTime SIX_HOUR = LocalTime.of(6, 0);
-    private final static LocalTime NINE_HOUR = LocalTime.of(9, 0);
-    private final static LocalTime NINETEEN_HOUR = LocalTime.of(19, 0);
-    private final static LocalTime TWENTY_THREE_HOUR = LocalTime.of(23, 0);
-    private final static LocalTime NIGHT_HOUR = LocalTime.of(0, 0);
+    private final static LocalTime BEGIN_MORNING = LocalTime.of(6, 0);
+    private final static LocalTime BEGIN_DAY = LocalTime.of(9, 0);
+    private final static LocalTime BEGIN_EVENING = LocalTime.of(19, 0);
+    private final static LocalTime BEGIN_NIGHT = LocalTime.of(23, 0);
     //Переменная имя resource bundle
     private final static String defaultProrerties = "message";
     private ResourceBundle resourceMessage;
@@ -43,18 +42,16 @@ public class Welcome {
         String retMessage = null;
         logger.debug("now local time = " + localTime);
 
-        if (localTime.isAfter(SIX_HOUR) && isBeforeEquals(localTime, NINE_HOUR))
+        if (localTime.isAfter(BEGIN_MORNING) && isBeforeEquals(localTime, BEGIN_DAY))
             retMessage = resourceMessage.getString("morning");
 
-        else if (localTime.isAfter(NINE_HOUR) && isBeforeEquals(localTime, NINETEEN_HOUR))
+        else if (localTime.isAfter(BEGIN_DAY) && isBeforeEquals(localTime, BEGIN_EVENING))
             retMessage = resourceMessage.getString("day");
 
-        else if (localTime.isAfter(SIX_HOUR) && isBeforeEquals(localTime, TWENTY_THREE_HOUR))
+        else if (localTime.isAfter(BEGIN_EVENING) && isBeforeEquals(localTime, BEGIN_NIGHT))
             retMessage = resourceMessage.getString("evening");
 
-        else if (localTime.isAfter(TWENTY_THREE_HOUR)
-                || localTime.compareTo(NIGHT_HOUR) == 0
-                || isBeforeEquals(localTime, SIX_HOUR))
+        else
             retMessage = resourceMessage.getString("night");
 
         logger.debug("message for local time = " + retMessage);
